@@ -1014,154 +1014,154 @@ de:
     edit:
       change_password: "Passwort ändern"
       header: "Mein Benutzerkonto bearbeiten"
-      important_text: "When you submit this form, you will receive a message with a confirmation link at the new email address above. Your email address will not be changed until <em>after</em> you visit this confirmation link."
-      legend: "User Account"
+      important_text: "Wenn Sie dieses Formular abschicken, erhalten Sie eine E-Mail, die einen Bestätigungslink enthält. Ihre E-Mail-Adresse wird erst aktualisiert, wenn Sie diesen Link betätigen."
+      legend: "Benutzerkonto"
     new:
-      header: "Create an Account"
-      legend: "User Account"
-      submit: "Sign Up"
+      header: "Benutzerkonto anlegen"
+      legend: "Benutzerkonto"
+      submit: "Registrieren"
     show:
-      account_information: "Account Information"
-      header: "User Account (%{email})"
-      remove: " [remove]"
-      role_label: "Roles in %{app_name}"
+      account_information: "Kontoinformation"
+      header: "Benutzerkonto (%{email})"
+      remove: " [entferne]"
+      role_label: "Rollen in %{app_name}"
   work_roles:
-    actor: Actor
-    advisor: Advisor
-    artist: Artist
-    author: Author
+    actor: Schauspieler
+    advisor: Berater
+    artist: Künstler
+    author: Autor
     band: Band
-    choir: Choir
-    choreographer: Choreographer
-    co_principal_investigator: "Co-Principal Investigator"
-    committee_chair: "Committee Chair"
-    committee_member: "Committee Member"
-    composer: Composer
-    conductor: Conductor
-    contributor: Contributor
-    costume_designer: "Costume Designer"
-    creator: Creator
-    curator: Curator
-    dancer: Dancer
-    director: Director
-    director_of_research: "Director of Research"
-    editor: Editor
-    editorial_board_member: "Editorial Board Member"
+    choir: Chor
+    choreographer: Choreograph
+    co_principal_investigator: "Co-Forschungleiterr"
+    committee_chair: "Gremiumsvorsitzender"
+    committee_member: "Gremiumsmitglied"
+    composer: Komponist
+    conductor: Dirigent
+    contributor: Beitragender
+    costume_designer: "Kostümdesigner"
+    creator: Erschaffender
+    curator: Kurator
+    dancer: Tänzer
+    director: Direktor
+    director_of_research: "Leiter der Forschung"
+    editor: Herausgeber
+    editorial_board_member: "Mitglied der Herausgeberschaft"
     illustrator: Illustrator
-    interviewee: Interviewee
+    interviewee: Interviewter
     interviewer: Interviewer
-    lighting_designer: "Lighting Designer"
-    managing_editor: "Managing Editor"
-    musical_ensemble: "Musical Ensemble"
-    musician: Musician
-    orchestra: Orchestra
-    other: Other
-    patent_owner: "Patent Owner"
-    performer: Performer
-    presenter: Presenter
-    principal_investigator: "Principal Investigator"
-    producer: Producer
-    translator: Translator
+    lighting_designer: "Lichtbildner"
+    managing_editor: "Leitender Herausgeber"
+    musical_ensemble: "Musikensemble"
+    musician: Musiker
+    orchestra: Orchester
+    other: Sonstiges
+    patent_owner: "Patenthalter"
+    performer: Darsteller
+    presenter: Präsentator
+    principal_investigator: "Forschungsleiter"
+    producer: Produzent
+    translator: Übersetzer
   works:
     admin:
-      legend: "Administrative Tasks"
-      link: "Deposit Immediately via SWORD"
+      legend: "Adminsitrative Aufgaben"
+      link: "Direkt via SWORD im Repositorium veröffentlichen"
     attachments:
-      download_file: "Download File"
-      download_page: "Download Page"
-      local_library: "Local Library Link"
+      download_file: "Datei herunterladen"
+      download_page: "Seite herunterladen"
+      local_library: "Bibliothekslink"
     change_type_form:
-      label: "Change Type"
+      label: "Typ ändern"
     edit:
-      confirm: "Permanently delete this work? This cannot be undone."
-      delete_link: "Delete this work"
-      header: "Edit a Work"
+      confirm: "Soll dieses Werk wirklich gelöscht werden? Dies kann nicht rückgängig gemacht werden."
+      delete_link: "Dieses Werk löschen"
+      header: "Ein Werk bearbeiten"
     first_works:
-      recent: "Recent additions"
+      recent: "Neueste Zugänge"
     forms:
       fields:
         author_list_item:
-          remove: "[remove]"
+          remove: "[entferne]"
         author_name_strings:
-          add: "[add more %{role}s]"
-          example: "Format: LastName, FirstName Middle (e.g., Smith, John L.)"
-          remove: "[remove]"
-          role: "%{role}(s)"
+          add: "[weitere %{role}(n) hinzufügen]"
+          example: "Format: Nachname, Erster Vorname  Zweiter Vorname (z. B.: Mustermann, Max L.)"
+          remove: "[entferne]"
+          role: "%{role}(n)"
         contributor_list_item:
-          remove: "[remove]"
+          remove: "[entferne]"
         contributor_name_strings:
-          add: "[add more contributors]"
-          instructions: "Format: LastName, FirstName Middle (e.g., Smith, John L.)"
-          label: Contributor(s)
+          add: "[weitere Beteiligte hinzufügen]"
+          instructions: "Format: Nachname, Erster Vorname  Zweiter Vorname (z. B.: Mustermann, Max L.)"
+          label: Beteiligte
           remove: "[remove]"
         editor_name_strings:
-          add: "Add Editor to List"
-          drag: "(Drag and drop names to reorder editors in list)"
-          label: "Editor(s):"
+          add: "Herausgebern zur Liste hinzufügen"
+          drag: "(verschieben Sie einfach die Namen, um die Liste umzusortieren)"
+          label: "Herausgeber:"
         form_buttons:
-          save: "Save Changes"
-          saving: Saving...
+          save: "Änderungen speichern"
+          saving: Speichern ...
         keywords:
-          instructions: "When adding multiple keywords, separate them with semicolons (;)"
-          label: Keyword(s)
+          instructions: "Bei der eingabe mehrere Schlagwörter, diese mit Semikolon trennen."
+          label: Schlagwörter
         merge_author_name_strings:
-          instructions: "(Drag and drop names to reorder authors in list)"
-          label: Author(s)
+          instructions: "(verschieben Sie einfach die Namen, um die Liste umzusortierent)"
+          label: Autor(en)
         merge_editor_name_strings:
-          instructions: "(Drag and drop names to reorder editors in list)"
-          label: Editor(s)
+          instructions: "(verschieben Sie einfach die Namen, um die Liste umzusortieren)"
+          label: Herausgeber
         merge_form_buttons:
-          delete_dup: "Save Accepted Work and Delete Duplicate"
-          keep_dup: "Save Accepted Work and Keep Duplicate"
+          delete_dup: "Akzeptiertes Werk speichern und Dubletten löschen"
+          keep_dup: "Akzeptiertes Werk speichern und Dubletten behalten"
         merge_keywords:
-          label: Keyword(s)
+          label: Schlagwörter
         merge_publications:
-          label: "Periodical Title"
+          label: "Titel des Periodikums"
         merge_tags:
           label: Tag(s)
         publication:
-          label: "Publication Title"
+          label: "Titel der Publikation"
         tags:
-          add: "Add Tag to List"
+          add: "Tag zur Liste hinzufügen"
           label: Tag(s)
         title_secondary:
-          label: "Alternate Title"
+          label: "Zusatz zum Titel"
         title_tertiary:
-          label: "Series Title"
+          label: "Gesamttitel"
       form_add_batch:
-        add: "Add Batch"
-        disable: "Parsing and Importing Batch..."
-        instructions: "Either upload a file containing the citations, or cut and paste the citations into the box below."
-        legend: "Add Batch (RIS | Medline | Refworks XML)"
-        paste: "Or, Paste Citations:"
-        upload: "Upload File:"
+        add: "Import hinzufügen"
+        disable: "Import und Überprüfung der Daten..."
+        instructions: "Laden Sie entweder eine Datei mit den Zitation hoch oder kopieren Sie diese in die Box unten."
+        legend: "Import (RIS | Medline | Refworks XML)"
+        paste: "oder Kopieren von Zitationen:"
+        upload: "Datei hochladen:"
     index:
-      add: "Add a Work"
-      heading: "At the library, we <span class=\"hearts\"> &hearts;</span> our researchers."
-      view_orphans: "View orphaned works"
+      add: "Werk hinzufügen"
+      heading: "Hochschulbibliographie"
+      view_orphans: "Verwaiste Werke anzeigen"
     layouts:
       merge_form:
-        accepted: "Accepted work"
-        duplicate: "Duplicate work"
+        accepted: "Akzeptierte Werke"
+        duplicate: "Dubletten"
     local_authors:
-      heading: "%{university_name} Authors"
+      heading: "%{university_name} Autoren"
     local_recommendations:
-      heading: "Related %{university_name} Work"
+      heading: "Ähnliche Werke an der  %{university_name}"
     merge_duplicates:
-      flash_excluded: "%{work} is not a possible duplicate for this work."
-      flash_not_accepted: "This is a <strong>%{work_status}</strong> work. You may only merge fields into <strong>Accepted</strong> works."
-      header: "Duplicate work side-by-side editor"
-      instructions: "Use this screen to edit the <strong>Accepted Work</strong>. When you are finished, click the button at the bottom of the page to save changes."
+      flash_excluded: "%{work} ist keine mögliche Dublette zu diesem Werk."
+      flash_not_accepted: "Diese Werk ist im Status: <strong>%{work_status}</strong>. Sie können nur Felder in <strong>akzeptierten</strong> Werken zusammenführen."
+      header: "Editor zur Dublettenkontrolle"
+      instructions: "Hier können Sie akzeptierte Werke bearbeiten. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche unten, um Ihre Änderungen zu speichern."
     metadata:
       links:
         label: DOI/URL
     new:
-      header: "Select a type"
+      header: "Wählen Sie einen Typ"
     orphans:
-      confirm: "Are you sure? This operation cannot be undone."
-      header: "Orphaned works"
-      submit: "Delete checked works"
+      confirm: "Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden."
+      header: "Verwaiste Werke"
+      submit: "Ausgewählte Werke löschen"
     show:
-      archive: "Archive Research"
-      deposit: "Deposit Attachments"
-      edit: "Edit this work"
+      archive: "Forschung archivieren"
+      deposit: "Anhänge fürs Deposit"
+      edit: "Dieses Werk bearbeiten"
