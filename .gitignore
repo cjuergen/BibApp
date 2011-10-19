@@ -23,3 +23,5 @@ public/tolk/
 config/solr.yml
 config/smtp.yml
 config/database.yml
+config/locales/personalize/de.yml
+config/locales/personalize/en.yml
