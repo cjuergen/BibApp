@@ -1,5 +1,5 @@
 ---
-en:
+de:
   activerecord:
     attributes:
       artwork:
@@ -493,8 +493,8 @@ en:
     keywords:
       timeline: Zeitschiene
     memberships:
-      flash_create_multiple_membership: "One or more groups could not be joined; a membership already exists."
-      flash_create_multiple_privileges: "One or more groups could not be joined; you have insufficient privileges"
+      flash_create_multiple_membership: "Eine oder mehreren Gruppen konnte nicht beigetreten werden; eine Mitgliedschaft existiert bereits."
+      flash_create_multiple_privileges: "Eine oder mehreren Gruppen konnte nicht beigetreten werden; Sie haben nicht die notwendigen Rechte."
       flash_create_multiple_success: "Groups were successfully joined."
       new_title: "%{name}: Group Memberships"
     name_strings:
