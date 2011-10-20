@@ -1,7 +1,7 @@
 = render :layout => 'layouts/admin_bar' do
-  %li= link_to_unless_current "Show all Imports", user_imports_path(@user)
+  %li= link_to_unless_current t('imports.new.show_all'), user_imports_path(@user)
   - if logged_in? and @current_user.has_any_role?("editor", Group)
-    %li= link_to_unless_current "Add an Import", new_user_import_path(@user)
+    %li= link_to_unless_current t('imports.new.add_import'), new_user_import_path(@user)
 
 = render :layout => '/layouts/main_body_no_h2' do
   = error_messages_for :user, :class => 'notice'
