@@ -1021,6 +1021,11 @@ en:
       remember: "Remember Me"
       sign_up: "Sign Up"
       submit: "Log in"
+    saved:
+      delete: "Empty saved items"
+      no_works: "Nothing added yet."
+      title: "Saved"
+      works: "Works"
     show_options_form:
       send_to: "Send to"
   users:

@@ -1021,6 +1021,11 @@ de:
       remember: "Meine Daten merken"
       sign_up: "Registrieren"
       submit: "Anmelden"
+    saved:
+      delete: "Merkliste löschen"      
+      no_works: "Es liegen keine gespeicherten Werke vor."
+      title: "Merkliste"
+      works: "Anzahl der gespeicherten Werke"         
     show_options_form:
       send_to: "Senden an"
   users:

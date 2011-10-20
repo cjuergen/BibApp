@@ -1,17 +1,17 @@
 = render :layout => '/layouts/main_body_no_h2' do
   - if @works.blank?
-    %h2 Saved
-    %p Nothing added yet.
+    %h2 #{ t 'user_sessions.saved.title' }
+    %p #{ t 'user_sessions.saved.no_works' }
 
   - elsif @export.present?
-    %h2 Works
+    %h2 #{ t 'user_sessions.saved.works' }
     = @works
 
   - else
     = render :layout => 'layouts/admin_bar' do
-      %li #{ link_to "Empty saved items?", delete_saved_url}
+      %li #{ link_to t('user_sessions.saved.delete'), delete_saved_url}
 
-    %h2 Saved #{@saved.items.size}
+    %h2 #{ t 'user_sessions.saved.works' } #{@saved.items.size}
 
     = render 'show_options_form'
 
