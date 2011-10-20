@@ -127,7 +127,7 @@ module SharedHelper
           content_tag(:strong, "#{t 'app.saved'} - ") +
               link_to(t('app.remove'), remove_from_saved_work_url(work_id))
         else
-          link_to t('app.saved'), add_to_saved_work_url(work_id)
+          link_to t('app.save'), add_to_saved_work_url(work_id)
         end
       when :edit
         link_to t('app.edit'), edit_work_path(work_id, :return_path => return_path)
