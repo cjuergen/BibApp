@@ -1175,9 +1175,11 @@ en:
     new:
       header: "Select a type"
     orphans:
+      check_all: "Check all"
       confirm: "Are you sure? This operation cannot be undone."
       header: "Orphaned works"
       submit: "Delete checked works"
+      uncheck_all: "Uncheck all"
     show:
       archive: "Archive Research"
       deposit: "Deposit Attachments"

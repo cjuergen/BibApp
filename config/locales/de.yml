@@ -1186,9 +1186,11 @@ de:
     new:
       header: "Wählen Sie einen Typ"
     orphans:
+      check_all: "Alle auswählen"      
       confirm: "Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden."
       header: "Verwaiste Werke"
       submit: "Ausgewählte Werke löschen"
+      uncheck_all: "Alle abwählen"      
     show:
       archive: "Forschung archivieren"
       deposit: "Anhänge fürs Deposit"

@@ -4,8 +4,8 @@
 = form_for :orphan_delete, :url => orphans_delete_works_url(:page => params[:page], :per_page => params[:per_page]) do |f|
   %fieldset
     %p
-      %input#check-all{:type => 'button', :value => 'Check all'}
-      %input#uncheck-all{:type => 'button', :value => 'Uncheck all'}
+      %input#check-all{:type => 'button', :value => t('works.orphans.check_all')}
+      %input#uncheck-all{:type => 'button', :value => t('works.orphans.uncheck_all')}
     %ol#orphan-list.works
     - @orphans.each do |orphan|
       %li.work
