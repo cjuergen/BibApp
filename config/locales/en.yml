@@ -410,6 +410,17 @@ en:
     web_password: "Web Password"
     year: Year
     years: Years
+  attachments:
+    forms:
+      form_content_file:
+        header: "Attaching to %{class_name}"
+        legend: "Content Files"
+        label: "Upload File(s)"
+      form_image_file:
+        legend: "New Image"
+        label: "Upload File"
+    form_person:
+      confirm: "Permanently delete this person? This cannot be undone."
   common:
     admin:
       flash_update_publishers_error: "Error updating publisher data: %{message}"
@@ -879,6 +890,8 @@ en:
       personal_info: "Personal Info"
     form:
       disable: Saving...
+    index:
+      add: "Add a Person"
     ldap_search:
       example: "Ex: Smith, John OR Smith, J"
       explanation: "Search campus directory (to pre-populate person information)"
@@ -1025,6 +1038,10 @@ en:
       header: "User Account (%{email})"
       remove: " [remove]"
       role_label: "Roles in %{app_name}"
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
   work_roles:
     actor: Actor
     advisor: Advisor
