@@ -320,7 +320,7 @@ de:
       info1: "Die Verlagsdaten werden aus der SHERPA/RoMEO-Datenbank aktualisiert. Lokale Änderungen gehen dabei verloren."
       info2: "Es kann einen Moment dauern, die SHERPA-Daten zu laden."
       update: "SHERPA-Daten aktualisieren"
-    Gruppe hinzufügen: "Administrative Aufgaben"
+    tasks: "Administrative Aufgaben"
   app:
     about: Über Uns
     account: Benutzerkonto
@@ -410,6 +410,17 @@ de:
     web_password: "Passwort"
     year: Jahr
     years: Jahre
+  attachments:
+    forms:
+      form_content_file:
+        header: "Angehängt an %{class_name}"
+        legend: "Dateien/Inhalte"
+        label: "Datei(en) hochladen"
+      form_image_file:
+        legend: "Neues Bild"
+        label: "Datei hochladen"
+    form_person:
+      confirm: "Soll diese Person wirklich gelöscht werden? Dies kann nicht rückgängig gemacht werden."    
   common:
     admin:
       flash_update_publishers_error: "Beim Aktualisieren der Verlagsdaten ist ein Fehler aufgetreten: %{message}"
@@ -626,7 +637,7 @@ de:
       add_works_for_person: "Werke für %{person_link} hinzufügen"
       authors: "Autoren an %{institution}"
       coauthors: "Ko-Autoren an %{institution}"
-      conference_publication: "Titel der Konferenz"
+      conference_location: "Konferenzort"      
       confirm: "Soll dieses Werk wirklich gelöscht werden"
       contributors: Mitarbeiter
       delete: "Werk löschen"
@@ -879,6 +890,8 @@ de:
       personal_info: "Persönliche Daten"
     form:
       disable: Am Speichern...
+    index:
+      add: "Eine Person hinzufügen"      
     ldap_search:
       example: "Z.B.: Mustermann, Max OR Mustermann, M"
       explanation: "Durchsuchen des Universitätsverzeichnis nach Informationen zur Person"
@@ -1025,6 +1038,21 @@ de:
       header: "Benutzerkonto (%{email})"
       remove: " [entferne]"
       role_label: "Rollen in %{app_name}"
+  will_paginate:
+    previous_label: "&#8592; Zurück"
+    next_label: "Weiter &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page:
+        zero: "Keine %{model} gefunden"
+        one: "Zeige 1 %{model}"
+        other: "Zeige alle %{count} %{model}"
+      single_page_html:
+        zero: "Keine %{model} gefunden"
+        one: "Zeige <b>1</b> %{model}"
+        other: "Zeige <b>alle&nbsp;%{count}</b> %{model}"
+      multi_page: "Zeige %{from} - %{to} von insgesamt %{count} %{model}"
+      multi_page_html: "Zeige <b>%{from}&nbsp;-&nbsp;%{to}</b> von insgesamt <b>%{count}</b> %{model}"         
   work_roles:
     actor: Schauspieler
     advisor: Berater
