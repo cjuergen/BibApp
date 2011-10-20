@@ -575,7 +575,7 @@ de:
     roles:
       admin:
         one: Administrator
-        other: Administratorebn
+        other: Administratoren
       description_class: " of %{class}"
       description_class_and_name: " of %{class} '%{name}'"
       description_generic: " (generische Rolle)"
