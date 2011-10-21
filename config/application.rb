@@ -57,8 +57,6 @@ module Bibapp
     #log deprecations
     config.active_support.deprecation = :log
     
-    # available locales
-    config.i18n.available_locales = [:en, :de] 
   end
 end
 
