@@ -722,6 +722,12 @@ de:
       roles: "Rollen verwalten"
     work_types_box:
       types_of_work: "Arten von Werken"
+  #The i18n section is for 'meta' information about the internationalization/localization
+  #It's not necessarily translated - e.g. the language:name key should correspond to the
+  #language of the locale, not be a translation of 'English'
+  i18n:
+    language:
+      name: Deutsch      
   imports:
     accepted:
       text: "Dieser Import wurde aktzeptiert"
