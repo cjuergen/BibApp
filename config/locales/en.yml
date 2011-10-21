@@ -591,13 +591,6 @@ en:
       index_header_system: "System-wide Roles: %{app_name}"
       new_admin: "Add administrator"
       new_editor: "Add editor"
-    romeo:
-      black: black
-      blue: blue
-      green: green
-      unknown: unknown
-      white: white
-      yellow: yellow
     search:
       query: "Search for: "
       refine: "Refine Search"
@@ -729,6 +722,12 @@ en:
       roles: "Manage Roles"
     work_types_box:
       types_of_work: "Types of Work"
+  #The i18n section is for 'meta' information about the internationalization/localization
+  #It's not necessarily translated - e.g. the language:name key should correspond to the
+  #language of the locale, not be a translation of 'English'
+  i18n:
+    language:
+      name: English
   imports:
     accepted:
       text: "This import was <strong>accepted</strong>"
@@ -813,6 +812,18 @@ en:
       default_title: "Find an Expert"
     error:
       default_title: "Find an Expert"
+  make_resourceful:
+    show:
+      fails: "No item found"
+    create:
+      success: "Create successful!"
+      fails: "There was a problem!"
+    update:
+      success: "Save successful!"
+      fails: "There was a problem saving!"
+    destroy:
+      success: "Record deleted!"
+      fails: "There was a problem deleting!"
   memberships:
     action_links:
       all_groups: "All Groups"
