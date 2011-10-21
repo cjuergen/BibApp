@@ -591,13 +591,6 @@ de:
       index_header_system: "Systemweite Rollen: %{app_name}"
       new_admin: "Administrator hinzufügen"
       new_editor: "Herausgeber hinzufügen"
-    romeo:
-      black: schwarz
-      blue: blau
-      green: grün
-      unknown: unbekannt
-      white: weiß
-      yellow: gelb
     search:
       query: "Suche nach: "
       refine: "Suche verfeinern"
@@ -819,6 +812,18 @@ de:
       default_title: "Einen Experten finden"
     error:
       default_title: "Einen Experten finden"
+  make_resourceful:
+    show:
+      fails: "Keine Ressource gefunden"
+    create:
+      success: "Erfolgreich angelegt!"
+      fails: "Es gab ein Problem!"
+    update:
+      success: "Erfolgreich gespeichtert!"
+      fails: "Beim Speichern ist ein Problem aufgetreten!"
+    destroy:
+      success: "Eintrag gelöscht!"
+      fails: "Beim Löschen ist eine Problem aufgetreten!"      
   memberships:
     action_links:
       all_groups: "Alle Gruppen"
