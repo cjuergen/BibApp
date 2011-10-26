@@ -5,7 +5,7 @@ de:
       artwork:
         publication_date: "Datum der Erschaffung"
         publication_place: Erscheinungsort
-        publisher: "Institution or Collection Name"
+        publisher: "Name der Einrichtung oder Sammlung"
         title_primary: Titel
         title_tertiary: "Gesamttitel"
       book_review:
@@ -60,7 +60,7 @@ de:
       journal_article:
         issn_isbn: ISSN
         publication: "Zeitschriftentitel"
-        title_primary: "Article Title"
+        title_primary: "Titel des Artikels"
       journal_whole:
         date_range: Erscheinungszeitraum
         issn_isbn: ISSN
@@ -1134,17 +1134,17 @@ de:
         author_list_item:
           remove: "[entferne]"
         author_name_strings:
-          add: "[weitere %{role}(n) hinzufügen]"
+          add: "[weitere %{role}(en) hinzufügen]"
           example: "Format: Nachname, Erster Vorname  Zweiter Vorname (z. B.: Mustermann, Max L.)"
           remove: "[entferne]"
-          role: "%{role}(n)"
+          role: "%{role}(en)"
         contributor_list_item:
           remove: "[entferne]"
         contributor_name_strings:
           add: "[weitere Beteiligte hinzufügen]"
           instructions: "Format: Nachname, Erster Vorname  Zweiter Vorname (z. B.: Mustermann, Max L.)"
           label: Beteiligte
-          remove: "[remove]"
+          remove: "[entferne]"
         editor_name_strings:
           add: "Herausgebern zur Liste hinzufügen"
           drag: "(verschieben Sie einfach die Namen, um die Liste umzusortieren)"
