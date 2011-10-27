@@ -5,7 +5,11 @@ module TranslationsHelper
   end
 
   def t_work_role_name(role_name)
-    t("work_roles.#{canonicalize_work_role_name(role_name)}")
+    t("work_roles.#{canonicalize_work_role_name(role_name)}", :count => 1)
+  end
+
+  def t_work_role_name_pl(role_name)
+    t("work_roles.#{canonicalize_work_role_name(role_name)}", :count => 2)
   end
 
   #turns the english string for the role name into the appropriate string to do a translation lookup
@@ -41,6 +45,12 @@ module TranslationsHelper
     else
       name
     end
+  end
+
+  #return array of arrays. Each sub-array is a pair - the first is the type and the second is the label for the current
+  #locale. Sorted by the labels.
+  def sorted_work_types
+    Work.types.collect {|type| [type, type.gsub(/[()\/ ]/, '').constantize.model_name.human]}.sort_alphabetical_by {|a| a.last}
   end
 
   protected
