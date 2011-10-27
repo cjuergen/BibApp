@@ -142,6 +142,7 @@ de:
         links: URL
         location: Ort
         medium: Medium
+        notes: Anmerkungen
         publication: "Titel der Publikation"
         publication_date: "Erscheingungsdatum"
         publication_place: "Erscheinungsort"
@@ -380,6 +381,7 @@ de:
     powered: "Mit Unterstützung von "
     previous: zurück
     remove: Entfernen
+    required: "Pflichtfeld"    
     result:
       one: Ergebnis
       other: Ergebnisse
@@ -500,6 +502,13 @@ de:
       header: "Werke hinzufügen"
       new: "Importieren"
       person_header: "Werke für %{person_link} hinzufügen"
+      states:
+        accepted: "akzeptiert"
+        processing: "in Bearbeitung"
+        #yes, I know the key is speeled incorrectly, but it's that way in the code and I'm afraid to change it
+        recieved: "eingegangen"
+        rejected: "abgelehnt"
+        reviewable: "Bereit zur Begutachtung"      
       unauthorized: Nicht autorisiert.
     keywords:
       timeline: Zeitschiene
