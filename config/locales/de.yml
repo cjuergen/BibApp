@@ -1077,42 +1077,114 @@ de:
       multi_page: "Zeige %{from} - %{to} von insgesamt %{count} %{model}"
       multi_page_html: "Zeige <b>%{from}&nbsp;-&nbsp;%{to}</b> von insgesamt <b>%{count}</b> %{model}"         
   work_roles:
-    actor: Schauspieler
-    advisor: Berater
-    artist: Künstler
-    author: Autor
-    band: Band
-    choir: Chor
-    choreographer: Choreograph
-    co_principal_investigator: "Co-Forschungleiterr"
-    committee_chair: "Gremiumsvorsitzender"
-    committee_member: "Gremiumsmitglied"
-    composer: Komponist
-    conductor: Dirigent
-    contributor: Beitragender
-    costume_designer: "Kostümdesigner"
-    creator: Erschaffender
-    curator: Kurator
-    dancer: Tänzer
-    director: Direktor
-    director_of_research: "Leiter der Forschung"
-    editor: Herausgeber
-    editorial_board_member: "Mitglied der Herausgeberschaft"
-    illustrator: Illustrator
-    interviewee: Interviewter
-    interviewer: Interviewer
-    lighting_designer: "Lichtbildner"
-    managing_editor: "Leitender Herausgeber"
-    musical_ensemble: "Musikensemble"
-    musician: Musiker
-    orchestra: Orchester
-    other: Sonstiges
-    patent_owner: "Patenthalter"
-    performer: Darsteller
-    presenter: Präsentator
-    principal_investigator: "Forschungsleiter"
-    producer: Produzent
-    translator: Übersetzer
+    actor:
+      one: "Schauspieler"
+      other: "Schauspieler"
+    advisor:
+      one: "Berater"
+      other: "Berater"
+    artist:
+      one: "Künstler"
+      other: "Künstler"
+    author:
+      one: "Autor"
+      other: "Autoren"
+    band:
+      one: "Band"
+      other: "Bands"
+    choir:
+      one: "Chor"
+      other: "Chöre"
+    choreographer:
+      one: "Choreograph"
+      other: "Choreographen"
+    co_principal_investigator:
+      one: "Co-Leitender Forscher"
+      other: "Co-Leitende Forscher"
+    committee_chair:
+      one: "Gremiumsvorsitzender"
+      other: "Gremiumsvorsitzende"
+    committee_member:
+      one: "Gremiumsmitglied"
+      other: "Gremiumsmitglieder"
+    composer:
+      one: "Komponist"
+      other: "Komponisten"
+    conductor:
+      one: "Dirigent"
+      other: "Dirigenten"
+    contributor:
+      one: "Mitarbeiter"
+      other: "Mitarbeiter"
+    costume_designer:
+      one: "Kostümbildner"
+      other: "Kostümbildner"
+    creator:
+      one: "Urheber"
+      other: "Urheber"
+    curator:
+      one: "Kurator"
+      other: "Kuratoren"
+    dancer:
+      one: "Tänzer"
+      other: "Tänzer"
+    director:
+      one: "Direktor"
+      other: "Direktoren"
+    director_of_research:
+      one: "Direktor der Forschung"
+      other: "Direktoren der Forschung"
+    editor:
+      one: "Herausgeber"
+      other: "Herausgeber"
+    editorial_board_member:
+      one: "Mitglied der Herausgeberschaft"
+      other: "Mitglieder der Herausgeberschaft"
+    illustrator:
+      one: "Illustrator"
+      other: "Illustratoren"
+    interviewee:
+      one: "Interviewte"
+      other: "Interviewten"
+    interviewer:
+      one: "Interviewer"
+      other: "Interviewer"
+    lighting_designer:
+      one: "Lichtbildner"
+      other: "Lichtbildner"
+    managing_editor:
+      one: "Leitender Herausgeber"
+      other: "Leitende Herausgeber"
+    musical_ensemble:
+      one: "Musikensemble"
+      other: "Musikensemble"
+    musician:
+      one: "Musiker"
+      other: "Musiker"
+    orchestra:
+      one: "Orchester"
+      other: "Orchester"
+    other:
+      one: "Sonstiger"
+      other: "Sonstige"
+    patent_owner:
+      one: "Patenthalter"
+      other: "Patenthalter"
+    performer:
+      one: "Darsteller"
+      other: "Darsteller"
+    presenter:
+      one: "Präsentator"
+      other: "Präsentatoren"
+    principal_investigator:
+      one: "Leitender Forscher"
+      other: "Leitende Forscher"
+    producer:
+      one: "Produzent"
+      other: "Produzenten"
+    translator:
+      one: "Übersetzer"
+      other: "Übersetzer"
   works:
     admin:
       legend: "Adminsitrative Aufgaben"
