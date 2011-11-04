@@ -40,7 +40,7 @@ module Bibapp
 
     # Specify desired locales in config/locales.yml. If that doesn't exist use English only.
     # The first in the list will be the default locale by default.
-    locales = YAML.load_file(File.join(Rails.root, 'config', 'locales.yml')).collect {|l| l.to_sym} rescue [:en]
+    locales = YAML.load_file(File.join(Rails.root, 'config', 'locales.yml')).collect { |l| l.to_sym } rescue [:en]
     config.i18n.available_locales = locales
     config.i18n.default_locale = locales.first
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
@@ -58,6 +58,7 @@ module Bibapp
     config.active_support.deprecation = :log
     
   end
+
 end
 
 require 'error_handler'
