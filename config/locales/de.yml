@@ -757,7 +757,7 @@ de:
       no_errors: "Beim Import sind keine Fehler aufgetreten."
     import_names:
       header: "Importnamen"
-      text: "Wählen Sie die fehlenden Variationen Ihres Namens aus."
+      text: "wählen Sie die fehlenden Variationen Ihres Namens aus."
     index:
       header: "Importe für %{email}"
       link: "Einen Import hinzufügen"
@@ -787,7 +787,7 @@ de:
       duplicate_works: "Dubletten"
       new_works: "Neue Werke"
     work_type_list:
-      header: "Wählen Sie einen Typ"
+      header: "wählen Sie einen Typ"
     works_destroy_form:
       submit: "Ausgewählte Werke löschen"
     works_imported:
@@ -799,7 +799,7 @@ de:
     application:
       select_item: "Bitte wählen Sie einen Eintrag zum Löschen aus."
       confirm_delete: "Soll dieser Eintrag wirklich dauerhaft gelöscht werden?"
-      confirm_delete_pl: "Sind Sie sicher, dass Sie diese  __count__ Eintrage permanent löschen wollen?"
+      confirm_delete_pl: "Sind Sie sicher, dass Sie diese  __count__ Einträge permanent löschen wollen?"
     specific:
       contributorships:
         index:
@@ -811,7 +811,7 @@ de:
           confirm_verify_plural: "Sind Sie sicher, dass Sie diese __count__ Einträge verifizieren wollen?"
           confirm_deny: "Sind Sie sicher, dass Sie diesen Eintrag ablehnen wollen?"
           confirm_deny_plural: "Sind Sie sicher, dass Sie diese  __count__ Einträge ablehnen wollen?"
-          confirm_unverify: "Sind Sie sicher, dass Sie bei diesem Eintrage die Verifizierung rückgängig machen wollen?"
+          confirm_unverify: "Sind Sie sicher, dass Sie bei diesem Eintrag die Verifizierung rückgängig machen wollen?"
           confirm_unverify_plural: "Sind Sie sicher, dass Sie bei diesen __count__ Einträgen die Verifizierung rückgängig machen wollen?"
       imports:
         show:
@@ -942,9 +942,9 @@ de:
       manage_contributorships: "Autorenschaften Verwalten"
       manage_roles: "Rollen verwalten"
     batch_csv_show:
-      legend_absent: "Wählen Sie eine mit komma separierte Datei aus."
+      legend_absent: "wählen Sie eine mit komma separierte Datei aus."
       legend_present: "CSV Hochladen"
-      select_file: "Wählen Sie eine mit Komma separierte CSV-Datei für den Import aus."
+      select_file: "wählen Sie eine mit Komma separierte CSV-Datei für den Import aus."
     edit:
       add: "Eine Person hinzufügen"
       confirm: "Soll diese Person wirklich gelöscht werden? Dies kann nicht rückgängig gemacht werden."
@@ -979,7 +979,7 @@ de:
       description: "Neueste %{university_name} Werke von %{object_name}"
   publications:
     authorities:
-      instructions: "Um Publikationsnormdaten zu setzen, fügen Sie dem Feld Einträge hinzu. Wählen Sie einen als Normdatum und Klicken Sie <em>Normdatenreferenz setzen</em>."
+      instructions: "Um Publikationsnormdaten zu setzen, fügen Sie dem Feld Einträge hinzu. wählen Sie einen als Normdatum und Klicken Sie <em>Normdatenreferenz setzen</em>."
     edit:
       confirm: "Soll diese Publikation wirklich gelöscht werden? Dies kann nicht rückgängig gemacht werden."
     form:
@@ -994,7 +994,7 @@ de:
       published_by: "Veröffentlich von"
   publishers:
     authorities:
-      instructions: "Um Verlagsnormdaten zu setzen, fügen Sie dem Feld Einträge hinzu. Wählen Sie einen als Normdatum und Klicken Sie <em>Normdatenreferenz setzen</em>."
+      instructions: "Um Verlagsnormdaten zu setzen, fügen Sie dem Feld Einträge hinzu. wählen Sie einen als Normdatum und Klicken Sie <em>Normdatenreferenz setzen</em>."
     form:
       auth_record: "Normdateneintrag für Verlag"
       copy_allowed: "Verlagskopie zugelassen?"
@@ -1057,7 +1057,7 @@ de:
       formats: Formate
       heading: "Ergebnisse verfeinern"
     file_upload:
-      select_file: "Wählen Sie eine Datei"
+      select_file: "wählen Sie eine Datei"
     footer:
       powered_by: "Mit Unterstützung von "
     keyword_cloud:
@@ -1324,7 +1324,7 @@ de:
       links:
         label: DOI/URL
     new:
-      header: "Wählen Sie einen Typ"
+      header: "wählen Sie einen Typ"
     orphans:
       check_all: "Alle auswählen"      
       confirm: "Sind Sie sicher? Diese Aktion kann nicht rückgängig gemacht werden."
