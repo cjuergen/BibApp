@@ -739,7 +739,7 @@ de:
       name: Deutsch      
   imports:
     accepted:
-      text: "Dieser Import wurde aktzeptiert"
+      text: "Dieser Import wurde akzeptiert"
       warning: "Dieser Import wurde akzeptiert, aber er enthÃ¤lt keine Werke. Sie wurden vielleicht gelÃ¶scht."
     batch_import_form:
       legend: "Import (RIS | Medline | Refworks XML)"
@@ -792,11 +792,42 @@ de:
       submit: "AusgewÃ¤hlte Werke lÃ¶schen"
     works_imported:
       header: "Importierte Werke"
+  #The jsperanto section is for use with the jsperanto jquery i18n library for javascript files
+  #As such, it uses different interpolation and pluralization syntax. See Bibapp wiki.
+  #This section is used to autogenerate files in public/javascripts/translations that jsperanto uses to translate.
   jsperanto:
+    application:
+      select_item: "Bitte wählen Sie einen Eintrag zum Löschen aus."
+      confirm_delete: "Soll dieser Eintrag wirklich dauerhaft gelöscht werden?"
+      confirm_delete_pl: "Sind Sie sicher, dass Sie diese  __count__ Einträge permanent löschen wollen?"
     specific:
+      contributorships:
+        index:
+          no_action: "Keine Aktion ausgewählt"
+          select_verify: "Bitte wählen Sie einen Eintrag zum Verifizieren aus."
+          select_deny: "Bitte wählen Sie einen Eintrag zum Ablehnen aus."
+          select_unverify: "Bitte wählen Sie einen Eintrag, bei dem die Verifizierung rückgängig gemacht werden soll, aus."
+          confirm_verify: "Sind Sie sicher, dass Sie diesen Eintrag verifizieren wollen?"
+          confirm_verify_plural: "Sind Sie sicher, dass Sie diese __count__ Einträge verifizieren wollen?"
+          confirm_deny: "Sind Sie sicher, dass Sie diesen Eintrag ablehnen wollen?"
+          confirm_deny_plural: "Sind Sie sicher, dass Sie diese  __count__ Einträge ablehnen wollen?"
+          confirm_unverify: "Sind Sie sicher, dass Sie bei diesem Eintrage die Verifizierung rückgängig machen wollen?"
+          confirm_unverify_plural: "Sind Sie sicher, dass Sie bei diesen __count__ Einträgen die Verifizierung rückgängig machen wollen?"
       imports:
         show:
-          matched_total: "__count__ Werke"
+          matched_total: "__count__ Werk"
+          matched_total_plural: "__count__ Werke"
+          remaining_total: "__count__ verbleibt ohne Zuordnung."
+          remaining_total_plural: "__count__ verbleiben ohne Zuordnung."
+          remaining_total_zero: "Alle Einträge zugeordnet."
+      keywords:
+        timeline:
+          title: "Werkarten"
+      memberships:
+        new:
+          select_group: "Bitte wählen Sie eine Gruppe zum Beitreten aus."
+          confirm: "Sind Sie sicher, dass Sie dieser Gruppe beitreten wollen?"
+          confirm_plural: "Sind Sie sicher, dass Sie diesen __count__ Gruppen beitreten wollen?"
   keywordings:
     edit:
       header: "Schlagworte bearbeiten"
