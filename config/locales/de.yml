@@ -797,35 +797,35 @@ de:
   #This section is used to autogenerate files in public/javascripts/translations that jsperanto uses to translate.
   jsperanto:
     application:
-      select_item: "Bitte w‰hlen Sie einen Eintrag zum Lˆschen aus."
-      confirm_delete: "Soll dieser Eintrag wirklich dauerhaft gelˆscht werden?"
-      confirm_delete_pl: "Sind Sie sicher, dass Sie diese  __count__ Eintr‰ge permanent lˆschen wollen?"
+      select_item: "Bitte w√§hlen Sie einen Eintrag zum L√∂schen aus."
+      confirm_delete: "Soll dieser Eintrag wirklich dauerhaft gel√∂scht werden?"
+      confirm_delete_pl: "Sind Sie sicher, dass Sie diese  __count__ Eintrage permanent l√∂schen wollen?"
     specific:
       contributorships:
         index:
-          no_action: "Keine Aktion ausgew‰hlt"
-          select_verify: "Bitte w‰hlen Sie einen Eintrag zum Verifizieren aus."
-          select_deny: "Bitte w‰hlen Sie einen Eintrag zum Ablehnen aus."
-          select_unverify: "Bitte w‰hlen Sie einen Eintrag, bei dem die Verifizierung r¸ckg‰ngig gemacht werden soll, aus."
+          no_action: "Keine Aktion ausgew√§hlt"
+          select_verify: "Bitte w√§hlen Sie einen Eintrag zum Verifizieren aus."
+          select_deny: "Bitte w√§hlen Sie einen Eintrag zum Ablehnen aus."
+          select_unverify: "Bitte w√§hlen Sie einen Eintrag, bei dem die Verifizierung r√ºckg√§ngig gemacht werden soll, aus."
           confirm_verify: "Sind Sie sicher, dass Sie diesen Eintrag verifizieren wollen?"
-          confirm_verify_plural: "Sind Sie sicher, dass Sie diese __count__ Eintr‰ge verifizieren wollen?"
+          confirm_verify_plural: "Sind Sie sicher, dass Sie diese __count__ Eintr√§ge verifizieren wollen?"
           confirm_deny: "Sind Sie sicher, dass Sie diesen Eintrag ablehnen wollen?"
-          confirm_deny_plural: "Sind Sie sicher, dass Sie diese  __count__ Eintr‰ge ablehnen wollen?"
-          confirm_unverify: "Sind Sie sicher, dass Sie bei diesem Eintrage die Verifizierung r¸ckg‰ngig machen wollen?"
-          confirm_unverify_plural: "Sind Sie sicher, dass Sie bei diesen __count__ Eintr‰gen die Verifizierung r¸ckg‰ngig machen wollen?"
+          confirm_deny_plural: "Sind Sie sicher, dass Sie diese  __count__ Eintr√§ge ablehnen wollen?"
+          confirm_unverify: "Sind Sie sicher, dass Sie bei diesem Eintrage die Verifizierung r√ºckg√§ngig machen wollen?"
+          confirm_unverify_plural: "Sind Sie sicher, dass Sie bei diesen __count__ Eintr√§gen die Verifizierung r√ºckg√§ngig machen wollen?"
       imports:
         show:
           matched_total: "__count__ Werk"
           matched_total_plural: "__count__ Werke"
           remaining_total: "__count__ verbleibt ohne Zuordnung."
           remaining_total_plural: "__count__ verbleiben ohne Zuordnung."
-          remaining_total_zero: "Alle Eintr‰ge zugeordnet."
+          remaining_total_zero: "Alle Eintr√§ge zugeordnet."
       keywords:
         timeline:
           title: "Werkarten"
       memberships:
         new:
-          select_group: "Bitte w‰hlen Sie eine Gruppe zum Beitreten aus."
+          select_group: "Bitte w√§hlen Sie eine Gruppe zum Beitreten aus."
           confirm: "Sind Sie sicher, dass Sie dieser Gruppe beitreten wollen?"
           confirm_plural: "Sind Sie sicher, dass Sie diesen __count__ Gruppen beitreten wollen?"
   keywordings:
