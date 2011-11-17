@@ -10,6 +10,8 @@ class Work < ActiveRecord::Base
   # for a specific Person in the system
   # (This occurs when adding a Work directly to a Person).
   attr_accessor :preverified_person
+  # For an import we need this flag in order to be able to create the contributorships at the right time
+  attr_accessor :skip_create_contributorships
 
   serialize :scoring_hash
 
@@ -38,6 +40,30 @@ class Work < ActiveRecord::Base
   has_many :attachments, :as => :asset
   belongs_to :work_archive_state
 
+  validates_presence_of :title_primary
+  validates_numericality_of :publication_date_year, :allow_nil => true, :greater_than => 0
+  validates_inclusion_of :publication_date_month, :in => 1..12, :allow_nil => true
+  validates_each :publication_date_month do |record, attr, value|
+    if value.present?
+      unless record.publication_date_year
+        record.errors.add attr, 'must have a year in order to supply a month'
+      end
+    end
+  end
+  validates_inclusion_of :publication_date_day, :in => 1..31, :allow_nil => true
+  validates_each :publication_date_day do |record, attr, value|
+    if value.present?
+      if  record.publication_date_year and record.publication_date_month
+        begin
+          Date.new(record.publication_date_year, record.publication_date_month, record.publication_date_day)
+        rescue
+          record.errors.add attr, 'is not a valid day in the given year and month'
+        end
+      else
+        record.errors.add attr, 'must have a year and a month to supply a day'
+      end
+    end
+  end
   #### Named Scopes ####
   #Various Work Statuses
   STATE_IN_PROCESS = 1
@@ -69,9 +95,10 @@ class Work < ActiveRecord::Base
         lambda { |authority_publication_id| where(:authority_publication_id => authority_publication_id) }
 
   scope :most_recent_first, order('updated_at DESC')
+  scope :by_publication_date, order('publication_date_year DESC, publication_date_month DESC, publication_date_day DESC')
 
   def self.orphans
-    (self.orphans_no_contributorships + self.orphans_denied_contributorships).uniq.sort {|a, b| a.title_primary <=> b.title_primary}
+    (self.orphans_no_contributorships + self.orphans_denied_contributorships).uniq.sort { |a, b| a.title_primary <=> b.title_primary }
   end
 
   def self.orphans_no_contributorships
@@ -85,9 +112,9 @@ class Work < ActiveRecord::Base
   #all their contributorships and find the ones with all denied contributorships in code
   def self.orphans_denied_contributorships
     contributorships = Contributorship.denied.select("DISTINCT work_id")
-    works = self.includes(:contributorships).where(:id => contributorships.collect {|c| c.work_id})
+    works = self.includes(:contributorships).where(:id => contributorships.collect { |c| c.work_id })
     works.select do |work|
-      !work.contributorships.detect {|c| !c.denied?}
+      !work.contributorships.detect { |c| !c.denied? }
     end
   end
 
@@ -107,7 +134,7 @@ class Work < ActiveRecord::Base
   end
 
   def after_save_actions
-    create_contributorships
+    create_contributorships unless self.skip_create_contributorships
   end
 
   def before_save_actions
@@ -238,7 +265,8 @@ class Work < ActiveRecord::Base
   end
 
   # Creates a new work from an attribute hash
-  def self.create_from_hash(h)
+  # Caller must check to see if there were any validation errors
+  def self.create_from_hash(h, add_contributorships = true)
     klass = h[:klass]
 
     # Are we working with a legit SubKlass?
@@ -248,6 +276,7 @@ class Work < ActiveRecord::Base
     end
 
     work = klass.new
+    work.skip_create_contributorships = !add_contributorships
     work.update_from_hash(h)
   end
 
@@ -271,7 +300,7 @@ class Work < ActiveRecord::Base
 
   def publication_name_from_hash(h)
     case self.class.to_s
-      when 'BookWhole', 'Monograph', 'JournalWhole', 'ConferenceProceedingWhole'
+      when 'BookWhole', 'Monograph', 'JournalWhole', 'ConferenceProceedingWhole', 'WebPage'
         h[:title_primary] ? h[:title_primary] : 'Unknown'
       when 'BookSection', 'ConferencePaper', 'ConferencePoster', 'PresentationLecture', 'Report'
         h[:title_secondary] ? h[:title_secondary] : 'Unknown'
@@ -283,55 +312,48 @@ class Work < ActiveRecord::Base
   end
 
   # Updates an existing work from an attribute hash
+  # Caller must check to see if there were any validation errors.
   def update_from_hash(h)
-    begin
-      work_name_strings = (h[:work_name_strings] || []).collect do |wns|
-        {:name => wns[:name], :role => self.denormalize_role(wns[:role])}
-      end
-      self.set_work_name_strings(work_name_strings)
+    work_name_strings = (h[:work_name_strings] || []).collect do |wns|
+      {:name => wns[:name], :role => self.denormalize_role(wns[:role])}
+    end
+    self.set_work_name_strings(work_name_strings)
 
-      #If we are adding to a person, pre-verify that person's contributorship
-      person = Person.find(h[:person_id]) if h[:person_id]
-      self.preverified_person = person if person
+    #If we are adding to a person, pre-verify that person's contributorship
+    person = Person.find(h[:person_id]) if h[:person_id]
+    self.preverified_person = person if person
 
-      ###
-      # Setting Publication Info, including Publisher
-      ###
-      publication_name = publication_name_from_hash(h)
+    ###
+    # Setting Publication Info, including Publisher
+    ###
+    publication_name = publication_name_from_hash(h)
 
-      issn_isbn = h[:issn_isbn]
-      if publication_name == 'Unknown' and issn_isbn.present?
-        publication_name = "Unknown (#{issn_isbn})"
-      end
-
-      self.set_publication_info(:name => publication_name,
-                                :issn_isbn => issn_isbn,
-                                :publisher_name => h[:publisher])
-
-      ###
-      # Setting Keywords
-      ###
-      self.set_keyword_strings(h[:keywords])
-
-      # Clean the hash of non-Work table data
-      # Cleaning will prepare the hash for ActiveRecord insert
-      self.delete_non_work_data(h)
-
-      # When adding a work to a person, person_id causes work.save to fail
-      h.delete(:person_id) if h[:person_id]
-
-      #save remaining hash attributes
-      saved = self.update_attributes(h)
-
-    rescue Exception => e
-      return nil, e
+    issn_isbn = h[:issn_isbn]
+    if publication_name == 'Unknown' and issn_isbn.present?
+      publication_name = "Unknown (#{issn_isbn})"
     end
 
-    if saved
-      return self.id, nil
-    else
-      return nil, "Validation Error: Primary Title is missing."
-    end
+    self.set_publication_info(:name => publication_name,
+                              :issn_isbn => issn_isbn,
+                              :publisher_name => h[:publisher])
+
+    ###
+    # Setting Keywords
+    ###
+    self.set_keyword_strings(h[:keywords])
+
+    # Clean the hash of non-Work table data
+    # Cleaning will prepare the hash for ActiveRecord insert
+    self.delete_non_work_data(h)
+
+    # When adding a work to a person, person_id causes work.save to fail
+    h.delete(:person_id) if h[:person_id]
+
+    #save remaining hash attributes
+    saved = self.update_attributes(h)
+
+    return self
+
   end
 
 
@@ -365,7 +387,7 @@ class Work < ActiveRecord::Base
 
   # Finds year of publication for this work
   def year
-    publication_date ? publication_date.year : nil
+    publication_date_year
   end
 
   # Initializes an array of Keywords
@@ -539,7 +561,7 @@ class Work < ActiveRecord::Base
 
   # Return a hash comprising all the Contributorship scoring methods
   def update_scoring_hash
-    self.scoring_hash = {:year => self.publication_date.try(:year),
+    self.scoring_hash = {:year => self.publication_date_year,
                          :publication_id => self.publication_id,
                          :collaborator_ids => self.name_strings.collect { |ns| ns.id }, #there's an error if one tries to do this the natural way
                          :keyword_ids => self.keyword_ids}
@@ -627,7 +649,7 @@ class Work < ActiveRecord::Base
       append_apa_editor_text(citation_string)
 
       #Publication year
-      citation_string << " (#{self.publication_date.year})" if self.publication_date
+      citation_string << " (#{self.publication_date_year})" if self.publication_date_year
 
       #Only add a period if the string doesn't currently end in a period.
       citation_string << ". " if !citation_string.match("\.\s*\Z")
@@ -717,7 +739,7 @@ class Work < ActiveRecord::Base
       open_url_kevs[:source] = "&rft.jtitle=#{CGI.escape(self.publication.authority.name)}"
       open_url_kevs[:issn] = "&rft.issn=#{self.publication.issns.first[:name]}" if !self.publication.issns.empty?
     end
-    open_url_kevs[:date] = "&rft.date=#{self.publication_date}"
+    open_url_kevs[:date] = "&rft.date=#{self.publication_date_string}"
     open_url_kevs[:volume] = "&rft.volume=#{self.volume}"
     open_url_kevs[:issue] = "&rft.issue=#{self.issue}"
     open_url_kevs[:start_page] = "&rft.spage=#{self.start_page}"
@@ -769,6 +791,18 @@ class Work < ActiveRecord::Base
 
   def reindex_before_destroy
     Index.remove_from_solr(self)
+  end
+
+  def publication_date_string
+    if self.publication_date_day
+      sprintf('%04d-%02d-%02d', self.publication_date_year, self.publication_date_month, self.publication_date_day)
+    elsif self.publication_date_month
+      sprintf('%04d-%02d', self.publication_date_year, self.publication_date_month)
+    elsif self.publication_date_year
+      sprintf('%04d', self.publication_date_year)
+    else
+      ""
+    end
   end
 
   protected

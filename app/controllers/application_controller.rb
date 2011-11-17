@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = valid_locale?(params[:locale]) ||
         valid_locale?((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) ||
+        (current_user.default_locale if current_user) ||
         I18n.default_locale
   end
 
@@ -147,7 +148,7 @@ class ApplicationController < ActionController::Base
 
     # Enable Citeproc
     if @export.present?
-      works = Work.order("publication_date desc").find(@works.collect { |c| c['pk_i'] })
+      works = Work.by_publication_date.find(@works.collect { |c| c['pk_i'] })
       ce = WorkExport.new
       @works = ce.drive_csl(@export, works)
     end

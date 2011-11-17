@@ -50,9 +50,15 @@ class Import < ActiveRecord::Base
 
   def notify_user
     logger.debug("\n=== Notify User - #{self.id} ===\n\n\n")
-
-    # @TODO: Email should send via delayed job?
-    Notifier.import_review_notification(self.user, self.id).deliver
+    current_locale = I18n.locale
+    Thread.exclusive do
+      begin
+        I18n.locale = self.user.default_locale
+        Notifier.import_review_notification(self).deliver
+      ensure
+        I18n.locale = current_locale
+      end
+    end
   end
 
   def accept_import
@@ -113,59 +119,62 @@ class Import < ActiveRecord::Base
 
   # Process Batch Import
   def batch_import
-    logger.debug("\n\n==== Starting Batch Import ==== \n\n")
+    return unless self.state == 'processing'
+    self.transaction do
+      logger.debug("\n\n==== Starting Batch Import ==== \n\n")
 
-    # Initialize an array of all the works added and hash of errors encountered in the batch
-    self.works_added = Array.new
-    self.import_errors = Hash.new
+      # Initialize an array of all the works added and hash of errors encountered in the batch
+      self.works_added = Array.new
+      self.import_errors = Hash.new
 
-    # Init: Parser and Importer
-    citation_parser = CitationParser.new
-    citation_importer = CitationImporter.new
+      # Init: Parser and Importer
+      citation_parser = CitationParser.new
+      citation_importer = CitationImporter.new
 
-    # Step: 1 -- Read the data
-    begin
+      # Step: 1 -- Read the data
       begin
-        str = StringMethods.ensure_utf8(self.read_import_file)
-      rescue EncodingException => e
-        self.import_errors[:invalid_file_format] = "Citations could not be parsed as the character encoding could not be determined or could not be converted to UTF-8."
-        raise e
+        begin
+          str = StringMethods.ensure_utf8(self.read_import_file)
+        rescue EncodingException => e
+          self.import_errors[:invalid_file_format] = "Citations could not be parsed as the character encoding could not be determined or could not be converted to UTF-8."
+          raise e
+        end
+
+        parsed_citations = citation_parser.parse(str)
+      rescue Exception => e
+        self.import_errors[:exception] = e
+        self.save_and_review!
+        return
       end
 
-      parsed_citations = citation_parser.parse(str)
-    rescue Exception => e
-      self.import_errors[:exception] = e
-      self.save_and_review!
-      return
-    end
-
-    if parsed_citations.blank?
-      self.import_errors[:no_parsed_citations] = <<-MESSAGE
+      if parsed_citations.blank?
+        self.import_errors[:no_parsed_citations] = <<-MESSAGE
         The format of the input was unrecognized or unsupported.
         <br/><strong>Supported formats include:</strong> RIS, MedLine and Refworks XML.<br/>
         In addition, if you are uploading a text file, it should use UTF-8 character encoding.
-      MESSAGE
+        MESSAGE
+        self.save_and_review!
+        return
+      end
+
+      begin
+        #import citations
+        attr_hashes = citation_importer.citation_attribute_hashes(parsed_citations)
+
+        # Make sure there is data in the Attribute Hash
+        return nil if attr_hashes.nil?
+
+        #create works and reindex
+        create_works_from_attribute_hashes(attr_hashes)
+        Index.batch_index
+
+      rescue Exception => e
+        self.import_errors[:exception] = e.message
+      end
+
+      # At this point, some or all of the works were saved to the database successfully.
       self.save_and_review!
-      return
     end
-
-    begin
-      #import citations
-      attr_hashes = citation_importer.citation_attribute_hashes(parsed_citations)
-
-      # Make sure there is data in the Attribute Hash
-      return nil if attr_hashes.nil?
-
-      #create works and reindex
-      create_works_from_attribute_hashes(attr_hashes)
-      Index.batch_index
-
-    rescue Exception => e
-      self.import_errors[:exception] = e.message
-    end
-
-    # At this point, some or all of the works were saved to the database successfully.
-    self.save_and_review!
   end
 
   def save_and_review!
@@ -181,14 +190,19 @@ class Import < ActiveRecord::Base
   def create_works_from_attribute_hashes(attr_hashes)
     self.transaction do
       attr_hashes.each do |h|
-        work, error = Work.create_from_hash(h)
-        if error.nil?
-          #add to batch of works created
-          self.works_added << work
-        else
-          #error = truncate(error) if error
+        begin
+          work = Work.create_from_hash(h, false)
+          if work.errors.blank?
+            #add to batch of works created
+            self.works_added << work.id
+          else #validation problem
+            self.import_errors[:import_error] ||= Array.new
+            self.import_errors[:import_error] << "<em>#{h[:title_primary]}</em> could not be imported. #{work.errors.to_s}<br/>"
+          end
+        rescue Exception => e
+          #actual exception
           self.import_errors[:import_error] ||= Array.new
-          self.import_errors[:import_error] << "<em>#{h[:title_primary]}</em> could not be imported. #{error}<br/>"
+          self.import_errors[:import_error] << "<em>#{h[:title_primary]}</em> could not be imported. #{e.to_s}<br/>"
         end
       end
     end

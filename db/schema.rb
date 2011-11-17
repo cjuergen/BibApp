@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020210500) do
+ActiveRecord::Schema.define(:version => 20111109185608) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename"
@@ -342,6 +342,7 @@ ActiveRecord::Schema.define(:version => 20111020210500) do
     t.string   "activation_code",           :limit => 40
     t.datetime "activated_at"
     t.string   "persistence_token",                       :default => "", :null => false
+    t.string   "default_locale"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -380,7 +381,6 @@ ActiveRecord::Schema.define(:version => 20111020210500) do
     t.text     "original_data"
     t.integer  "batch_index",              :default => 0
     t.text     "scoring_hash"
-    t.date     "publication_date"
     t.string   "language"
     t.text     "copyright_holder"
     t.boolean  "peer_reviewed"
@@ -400,6 +400,9 @@ ActiveRecord::Schema.define(:version => 20111020210500) do
     t.integer  "initial_publication_id"
     t.integer  "initial_publisher_id"
     t.string   "location"
+    t.integer  "publication_date_year"
+    t.integer  "publication_date_month"
+    t.integer  "publication_date_day"
   end
 
   add_index "works", ["batch_index"], :name => "batch_index"

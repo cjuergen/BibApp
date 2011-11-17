@@ -1,7 +1,6 @@
 require 'lib/open_url_conference_context'
 class ConferencePaper < Work
   include OpenUrlConferenceContext
-  validates_presence_of :title_primary
 
   def self.roles
     ['Author', 'Editor']
@@ -29,7 +28,7 @@ class ConferencePaper < Work
       open_url_kevs[:issn] = "&rft.issn=#{self.publication.issns.first[:name]}" if !self.publication.issns.empty?
       open_url_kevs[:isbn] = "&rft.isbn=#{self.publication.isbns.first[:name]}" if !self.publication.isbns.empty?
     end
-    open_url_kevs[:date] = "&rft.date=#{self.publication_date}"
+    open_url_kevs[:date] = "&rft.date=#{self.publication_date_string}"
     open_url_kevs[:volume] = "&rft.volume=#{self.volume}"
     open_url_kevs[:issue] = "&rft.issue=#{self.issue}"
     open_url_kevs[:start_page] = "&rft.spage=#{self.start_page}"
