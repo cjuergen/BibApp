@@ -20,10 +20,14 @@ class ApplicationController < ActionController::Base
 
   # Adds the locale parameter
   def set_locale
-    I18n.locale = valid_locale?(params[:locale]) ||
-        valid_locale?((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) ||
-        (current_user.default_locale if current_user) ||
-        I18n.default_locale
+    if I18n.available_locales.many?
+      I18n.locale = valid_locale?(params[:locale]) ||
+          valid_locale?((lang = request.env['HTTP_ACCEPT_LANGUAGE']) && lang[/^[a-z]{2}/]) ||
+          (current_user.default_locale if current_user) ||
+          I18n.default_locale
+    else
+      I18n.locale = I18n.available_locales.first
+    end
   end
 
   def valid_locale?(locale)
@@ -33,7 +37,11 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    {:locale => I18n.locale}
+    if I18n.available_locales.many?
+      {:locale => I18n.locale}
+    else
+      {}
+    end
   end
 
   # Adds a work.id to the session[:saved] array
