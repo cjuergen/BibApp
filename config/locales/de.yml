@@ -526,6 +526,7 @@ de:
       import_persons_subject: "%{app_name} - Import von Personen abgeschlossen"
       import_review_subject: "%{app_name} - Import steht zur Begutachtung bereit"
     passwords:
+      flash_create_inactive: "Diese Registrierung wurde noch nicht abgeschlossen. Die Registrierungsemail wird erneut verschickt."
       flash_create_no_account: "Dieses Benutzerkonto konnte nicht gefunden werden.  Versuchen Sie es bitte noch einmal."
       flash_create_sent: "An die Adresse %{email} wurde ein neues Passwort gesandt"
       flash_update_bad_match: "Es tut uns leid, das neu eingegebene Passwort stimmt mit der Kontrolleingabe nicht überein.  Versuchen Sie es bitte noch einmal."
